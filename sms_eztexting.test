@@ -1,26 +1,26 @@
 <?php
 /**
  * @file
- * Test file for sms_eztexting module
+ * Test file for sms_eztexting module.
  */
 
 class SmsEzTextingTestCase extends DrupalUnitTestCase {
   /**
-   * Tests description
+   * Tests description.
    *
    * @return array
-   *   array of tests description
+   *   Array of tests description.
    */
   public static function getInfo() {
     return array(
       'name' => t('Ez Texting sms gateway basic tests'),
       'description' => t('Test basic functionality of Ez Texting sms gateway module.'),
-      'group' => t('SMS Framework '),
+      'group' => t('SMS Framework'),
     );
   }
 
   /**
-   * Check gateway info method
+   * Check gateway info method.
    */
   public function testCheckGatewayInfo() {
     $expected = array(
@@ -36,7 +36,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Check configuration form
+   * Check configuration form.
    */
   public function testCheckGatewayConfigurationForm() {
 
@@ -90,7 +90,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Check send form
+   * Check send form.
    */
   public function testCheckSendForm() {
     $expected_form = array(
@@ -107,7 +107,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Check validation phone number method when not valid phone number
+   * Check validation phone number method when not valid phone number.
    */
   public function testInvalidPhoneNumberShouldReturnErrorMessage() {
     $return_value = sms_eztexting_validate_number('80634285794', array());
@@ -115,7 +115,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Check validation phone number method when valid phone number
+   * Check validation phone number method when valid phone number.
    */
   public function testValidPhoneNumberShouldReturnNull() {
     $return_value = sms_eztexting_validate_number('8634285794', array());
@@ -123,7 +123,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test gateway contries set
+   * Test gateway countries set.
    */
   public function testShouldReturnCorrectCountries() {
     $expected = array(
@@ -135,7 +135,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test check response method
+   * Test check response method.
    */
   public function testIfSuccessfulResponseShouldReturnTrue() {
     $this->assertEqual(TRUE, sms_eztexting_is_successful_response(200));
@@ -144,15 +144,15 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test check response method
+   * Test check response method.
    */
-  public function testIfFaileResponseShouldReturnFalse() {
+  public function testIfFailedResponseShouldReturnFalse() {
     $this->assertEqual(FALSE, sms_eztexting_is_successful_response(404));
     $this->assertEqual(FALSE, sms_eztexting_is_successful_response(500));
   }
 
   /**
-   * Test for check return value when response is failed
+   * Test for check return value when response is failed.
    */
   public function testFailedAuthResponseShouldReturnCorrectStatus() {
 
@@ -169,7 +169,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test for check return value when response is successful
+   * Test for check return value when response is successful.
    */
   public function testSuccessAuthResponseShouldReturnCorrectStatus() {
 
@@ -185,7 +185,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test for check return value when response is failed
+   * Test for check return value when response is failed.
    */
   public function testSendSmsReturnWrongResponseShouldReturnError() {
     $return_value = array(
@@ -201,7 +201,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test for check return value when response is failed
+   * Test for check return value when response is failed.
    */
   public function testSendSmsFailedShouldReturnError() {
     $xml = '<?xml version="1.0" encoding="UTF-8"?>
@@ -218,7 +218,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
 
     $return_value = array(
       'status' => FALSE,
-      'message' => t('An error occured during the HTTP request: @error', array('@error' => 'Wrong phone number')),
+      'message' => t('An error occurred during the HTTP request: @error', array('@error' => 'Wrong phone number')),
     );
 
     $this->assertEqual($return_value,
@@ -226,7 +226,7 @@ class SmsEzTextingTestCase extends DrupalUnitTestCase {
   }
 
   /**
-   * Test for check return value when response is successful
+   * Test for check return value when response is successful.
    */
   public function testSuccessSendSmsResponseShouldReturnCorrectStatus() {
     $xml_data = '<?xml version="1.0" encoding="UTF-8"?>
