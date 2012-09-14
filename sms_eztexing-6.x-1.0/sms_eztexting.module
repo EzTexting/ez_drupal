@@ -218,9 +218,10 @@ function sms_eztexting_command($command, $data = array(), $config = NULL) {
   $request_headers = array('Content-Type' => 'application/x-www-form-urlencoded');
 
   // !@debug
-  watchdog('sms-eztexting',
-    'Sending to ' . $request_url . '?' . http_build_query($data, '', '&'),
-    NULL,
+  watchdog(
+    'sms-eztexting',
+    'Sending to @url?@query',
+    array('@url' => $request_url, '@query' => http_build_query($data, '', '&')),
     WATCHDOG_DEBUG
   );
 
@@ -243,9 +244,11 @@ function sms_eztexting_command($command, $data = array(), $config = NULL) {
   }
 
   // !@debug
-  watchdog('sms-eztexting',
-    'Sent: ' . print_r($data, TRUE) . ' Received: ' . print_r($result, TRUE),
-    NULL, WATCHDOG_DEBUG
+  watchdog(
+    'sms-eztexting',
+    'Sent: @data Received: @result',
+    array('@data' => print_r($data, TRUE), '@result' => print_r($result, TRUE)), 
+    WATCHDOG_DEBUG
   );
 
   return $result;
