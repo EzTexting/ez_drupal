@@ -135,7 +135,7 @@ function sms_eztexting_admin_form($configuration) {
 function sms_eztexting_admin_form_validate($form, &$form_state) {
   $result = sms_eztexting_command('auth', array(), $form_state['values']);
   if (!$result['status']) {
-    form_set_error('', t('Ez Texting gateway error occurred: @error.', array('@error' => $result['message'])));
+    form_set_error('', t('Ez Texting gateway error occured: @error.', array('@error' => $result['message'])));
   }
 }
 
@@ -167,7 +167,7 @@ function sms_eztexting_send_form() {
  *   Array of options.
  *
  * @return string|void
- *   If phone number not valid return error message else return void.
+ *   if phone number not valid return error message else return void
  */
 function sms_eztexting_validate_number($number, $options) {
   $phone_number = trim($number);
@@ -196,7 +196,7 @@ function sms_eztexting_validate_number($number, $options) {
  *   Array of options.
  *
  * @return array
- *   Array contain the status false and errror message if sending failed.
+ *   Return array containing the status false and error message if sending failed.
  *   Otherwise return status true and response body.
  */
 function sms_eztexting_send($number, $message, $options) {
@@ -260,12 +260,11 @@ function sms_eztexting_command($command, $data = array(), $config = NULL) {
   );
 
   $http_response = drupal_http_request(
-    $request_url, array(
-      'headers'       => $request_headers,
-      'method'        => 'POST',
-      'data'          => http_build_query($data, '', '&'),
-      'max_redirects' => 0,
-    )
+    $request_url,
+    $request_headers,
+    'POST',
+    http_build_query($data, '', '&'),
+    0
   );
 
   switch ($command) {
@@ -322,8 +321,8 @@ function sms_eztexting_parse_auth_response($http_response) {
  *   HTTP Response.
  *
  * @return array
- *   Array with key status TRUE if response is successful
- *   otherwise return array with status FALSE and error message.
+ *   Array with key status TRUE if response is successful.
+ *   Otherwise return array with status FALSE and error message.
  */
 function sms_eztexting_parse_send_sms_response($http_response) {
 
