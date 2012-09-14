@@ -45,13 +45,13 @@ function sms_eztexting_gateway_info() {
 }
 
 /**
- * Gateway configuration form
+ * Gateway configuration form.
  *
  * @param array $configuration
- *   array of configuration gateway
+ *   Array of configuration gateway.
  *
  * @return array
- *   return gateway configuration form
+ *   Gateway configuration form.
  *
  * @author EzTexting
  */
@@ -82,13 +82,13 @@ function sms_eztexting_admin_form($configuration) {
 }
 
 /**
- * Validation configuration form
+ * Validation configuration form.
  *
  * @param array $form
- *   configuration form
+ *   Configuration form.
  *
  * @param array $form_state
- *   array of form values
+ *   Array of form values.
  *
  * @author EzTexting
  */
@@ -100,10 +100,10 @@ function sms_eztexting_admin_form_validate($form, &$form_state) {
 }
 
 /**
- * Returns custom additions to be added to the send forms
+ * Returns custom additions to be added to the send forms.
  *
  * @return array
- *   send form with countries set
+ *   Send form with countries set.
  *
  * @author EzTexting
  */
@@ -120,16 +120,16 @@ function sms_eztexting_send_form() {
 }
 
 /**
- * Validate phone number
+ * Validate phone number.
  *
  * @param string $number
- *   phone number
+ *   Phone number.
  *
  * @param array $options
- *   arrray of options
+ *   Array of options.
  *
  * @return string|void
- *   if phone number not valid return error message else return void
+ *   If phone number not valid return error message else return void.
  *
  * @author EzTexting
  */
@@ -151,16 +151,16 @@ function sms_eztexting_validate_number($number, $options) {
  * Callback for sending messages.
  *
  * @param string $number
- *   phone number
+ *   Phone number.
  *
  * @param string $message
- *   message to send
+ *   Message to send.
  *
  * @param array $options
- *   array of options
+ *   Array of options.
  *
  * @return array
- *   Return array contain the status false and errror message if sending failed.
+ *   Return array contain the status false and error message if sending failed.
  *   Otherwise return status true and response body.
  *
  * @author EzTexting
@@ -171,19 +171,19 @@ function sms_eztexting_send($number, $message, $options) {
 }
 
 /**
- * Executes a command using the Ez Texting API
+ * Executes a command using the Ez Texting API.
  *
  * @param string $command
- *   command name
+ *   Command name.
  *
  * @param array $data
- *   command data set
+ *   Command data set.
  *
  * @param array $config
- *   gateway configuration
+ *   Gateway configuration.
  *
  * @return array
- *   return mixed array result of execute command
+ *   Mixed array result of execute command.
  *
  * @author EzTexting
  */
@@ -252,13 +252,13 @@ function sms_eztexting_command($command, $data = array(), $config = NULL) {
 }
 
 /**
- * Parse Ez Texting auth response
+ * Parse Ez Texting auth response.
  *
  * @param object $http_response
- *   HTTP Response
+ *   HTTP Response.
  *
  * @return array
- *   return array with key status TRUE if response is successful
+ *   Array with key status TRUE if response is successful
  *   otherwise return array with status FALSE and error message.
  */
 function sms_eztexting_parse_auth_response($http_response) {
@@ -275,13 +275,13 @@ function sms_eztexting_parse_auth_response($http_response) {
 }
 
 /**
- * Parse Ez Texting send message response
+ * Parse Ez Texting send message response.
  *
  * @param object $http_response
- *   HTTP Response
+ *   HTTP Response.
  *
  * @return array
- *   return array with key status TRUE if response is successful
+ *   Array with key status TRUE if response is successful
  *   otherwise return array with status FALSE and error message.
  */
 function sms_eztexting_parse_send_sms_response($http_response) {
@@ -317,10 +317,10 @@ function sms_eztexting_parse_send_sms_response($http_response) {
 }
 
 /**
- * Return supported Ez Texting Country
+ * Return supported Ez Texting Country.
  *
  * @return array
- *   return array of contries
+ *   Array of contries.
  */
 function sms_eztexting_country_codes() {
   return array(
@@ -333,10 +333,10 @@ function sms_eztexting_country_codes() {
  * Check whether the response in successful
  *
  * @param int $code
- *   response code
+ *   Response code.
  *
  * @return boolean
- *   return TRUE if response is successful OTHERWISE return FALSE
+ *   TRUE if response is successful OTHERWISE return FALSE.
  *
  * @author EzTexting
  */
